@@ -20,6 +20,7 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 languageModule = ''
 lang_result = ''
 
+# Configure the bot so that commands is prefix "$"
 bot = botCommands.Bot(command_prefix='$')
 
 
@@ -47,7 +48,6 @@ def language_guilds(id_guilds):
         lang_guilds = 'en'
     else:
         lang_guilds = lang_json_r[lang_result[0]]['language']
-        pass
 
     global languageModule
     languageModule = __import__(lang_guilds)
@@ -67,7 +67,9 @@ async def hello(ctx):
 # Function that changes the language of server
 @bot.command()
 async def lang(ctx, arg):
+    # Get the server id
     language_guilds(bot.guilds[0].id)
+
     if arg == "fr" or arg == "en":
         with open('lang/server.json', 'r') as jsonFileRead:
             lang_json_r = json.load(jsonFileRead)
@@ -85,10 +87,9 @@ async def lang(ctx, arg):
         importlib.reload(languageModule)
 
         await ctx.send(languageModule.success_language_message)
-        pass
 
     else:
+        # Returns an error message because the variable "arg" has an incorrect value
         await ctx.send(languageModule.error_language_message)
-        pass
 
 bot.run(TOKEN)
