@@ -12,8 +12,6 @@ from discord.ext import commands as botCommands
 sys.path.append('lang')
 load_dotenv()
 
-import language
-
 # Creation of different variables
 TOKEN = os.getenv('DISCORD_TOKEN')
 
