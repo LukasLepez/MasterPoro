@@ -22,6 +22,7 @@ bot = botCommands.Bot(command_prefix='$')
 # Function to say hello
 @bot.command()
 async def hello(ctx):
+    idGuilds = str(bot.guilds[0].id)
     languageModule = guildsLanguage.check_guilds_language(idGuilds)
     await ctx.send(languageModule.hello_message)
 
