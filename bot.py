@@ -1,9 +1,10 @@
 """ Regroup all MasterPoro commands """
 
+import discord
 import os
 import sys
 import random
-import nacl
+import youtube_dl
 
 from dotenv import load_dotenv
 from discord.ext import commands as botCommands
@@ -17,6 +18,8 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 
 # Configure the bot so that commands is prefix "$"
 BOT = botCommands.Bot(command_prefix='$')
+
+player = {}
 
 
 # Function to say hello
@@ -51,15 +54,16 @@ async def poke(ctx):
     await ctx.send(member.mention)
 
 
-# @BOT.command()
-# async def join(ctx):
-#     channel = ctx.author.voice.channel
-#     print(ctx.author.voice)
-#     await channel.connect()
+@BOT.command()
+async def join(ctx):
+    """ Command to add discord bot to the current channel """
+    channel = ctx.author.voice.channel
+    await channel.connect()
 
 
-# @BOT.command()
-# async def leave(ctx):
-#     await ctx.bot.voice_clients.disconnect()
+@BOT.command()
+async def leave(ctx):
+    """ Command to leave discord bot to the current channel """
+    await ctx.voice_client.disconnect()
 
 BOT.run(TOKEN)
