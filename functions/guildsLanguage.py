@@ -6,7 +6,6 @@ def check_guilds_language(id_guilds):
     with open('./lang/server.json', 'r') as jsonFileRead:
         lang_json_r = json.load(jsonFileRead)
 
-    global lang_result
     lang_result = list(filter(lambda x : x == str(id_guilds), lang_json_r))
     if lang_result == []:
         data = lang_json_r
@@ -26,7 +25,6 @@ def check_guilds_language(id_guilds):
     else:
         lang_guilds = lang_json_r[id_guilds]['language']
 
-    global languageModule
     languageModule = __import__(lang_guilds)
 
     jsonFileRead.close()
