@@ -2,6 +2,7 @@
 
 import os
 import sys
+import random
 
 from dotenv import load_dotenv
 from discord.ext import commands as botCommands
@@ -28,7 +29,7 @@ async def hello(ctx):
 
 # Function that changes the language of server
 @BOT.command()
-async def lang(ctx, arg):
+async def lang(ctx, arg: str):
     """ Command to change language of discord server """
     id_guilds = str(BOT.guilds[0].id)
 
@@ -37,5 +38,14 @@ async def lang(ctx, arg):
     result = guilds_language.change_guilds_language(arg, id_guilds)
 
     await ctx.send(result)
+
+@BOT.command()
+async def poke(ctx):
+    """ Command to randomly mention a member of the discord """
+    list_member = list(filter(
+        lambda member: member.bot is not True and member != ctx.author, BOT.guilds[0].members
+    ))
+    member = random.choice(list_member)
+    await ctx.send(member.mention)
 
 BOT.run(TOKEN)

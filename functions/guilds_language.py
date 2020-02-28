@@ -3,7 +3,7 @@
 import json
 import importlib
 
-def check_guilds_language(id_guilds):
+def check_guilds_language(id_guilds: str):
     """ Function that checks the language of servers (guilds) """
     with open('./lang/server.json', 'r') as json_file_read:
         lang_json_r = json.load(json_file_read)
@@ -35,7 +35,7 @@ def check_guilds_language(id_guilds):
 
 
 
-def change_guilds_language(arg, id_guilds):
+def change_guilds_language(arg, id_guilds: str):
     """ Function that change the language of servers (guilds) """
     if arg in ("fr", "en"):
         with open('lang/server.json', 'r') as json_file_read:
