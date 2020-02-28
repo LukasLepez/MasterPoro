@@ -3,6 +3,7 @@
 import os
 import sys
 import random
+import nacl
 
 from dotenv import load_dotenv
 from discord.ext import commands as botCommands
@@ -39,6 +40,7 @@ async def lang(ctx, arg: str):
 
     await ctx.send(result)
 
+
 @BOT.command()
 async def poke(ctx):
     """ Command to randomly mention a member of the discord """
@@ -47,5 +49,17 @@ async def poke(ctx):
     ))
     member = random.choice(list_member)
     await ctx.send(member.mention)
+
+
+# @BOT.command()
+# async def join(ctx):
+#     channel = ctx.author.voice.channel
+#     print(ctx.author.voice)
+#     await channel.connect()
+
+
+# @BOT.command()
+# async def leave(ctx):
+#     await ctx.bot.voice_clients.disconnect()
 
 BOT.run(TOKEN)
