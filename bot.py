@@ -1,45 +1,35 @@
 """ Regroup all MasterPoro commands """
 
-import discord
-import os
-import sys
 import random
-import youtube_dl
+import json
 
-from dotenv import load_dotenv
-from discord.ext import commands as botCommands
-from functions import guilds_language
-
-sys.path.append('lang')
-load_dotenv()
-
-# Creation of different variables
-TOKEN = os.getenv('DISCORD_TOKEN')
-
-# Configure the bot so that commands is prefix "$"
-BOT = botCommands.Bot(command_prefix='$')
-
-player = {}
+from discord.ext.commands import Bot
+from modules import guilds_language as guildsLanguage
 
 
-# Function to say hello
+with open('config.json', 'r') as f:
+    config = json.load(f)
+
+
+BOT = Bot(command_prefix='$')
+
+
 @BOT.command()
 async def hello(ctx):
     """ Command to say hello """
     id_guilds = str(BOT.guilds[0].id)
-    language_module = guilds_language.check_guilds_language(id_guilds)
+    language_module = guildsLanguage.check_guilds_language(id_guilds)
     await ctx.send(language_module.hello_message)
 
 
-# Function that changes the language of server
 @BOT.command()
 async def lang(ctx, arg: str):
     """ Command to change language of discord server """
     id_guilds = str(BOT.guilds[0].id)
 
-    guilds_language.check_guilds_language(id_guilds)
+    guildsLanguage.check_guilds_language(id_guilds)
 
-    result = guilds_language.change_guilds_language(arg, id_guilds)
+    result = guildsLanguage.change_guilds_language(arg, id_guilds)
 
     await ctx.send(result)
 
@@ -66,4 +56,5 @@ async def leave(ctx):
     """ Command to leave discord bot to the current channel """
     await ctx.voice_client.disconnect()
 
-BOT.run(TOKEN)
+
+BOT.run(config['token'])
