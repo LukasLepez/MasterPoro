@@ -7,8 +7,8 @@ from discord.ext.commands import Bot
 from modules import guilds_language as guildsLanguage
 
 
-with open('config.json', 'r') as f:
-    config = json.load(f)
+with open('config.json', 'r') as config:
+    config = json.load(config)
 
 
 BOT = Bot(command_prefix='$')
