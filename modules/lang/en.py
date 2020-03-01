@@ -1,3 +1,5 @@
-hello_message = "Hello !"
-success_language_message = "The language has been changed !"
-error_language_message = "The chosen language does not exist."
+""" All bot discord messages in English """
+
+HELLO_MESSAGE = "Hello !"
+SUCCESS_LANGUAGE_MESSAGE = "The language has been changed !"
+ERROR_LANGUAGE_MESSAGE = "The chosen language does not exist."
