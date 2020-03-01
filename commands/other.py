@@ -1,3 +1,7 @@
+"""
+Regroup all MasterPoro other commands 
+"""
+
 import random
 
 from discord.ext import commands as Commands

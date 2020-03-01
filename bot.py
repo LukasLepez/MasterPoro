@@ -1,4 +1,6 @@
-""" Regroup all MasterPoro commands """
+""" 
+Main file used to launch the bot
+"""
 
 import json
 

@@ -1,4 +1,6 @@
-""" All bot discord messages in English """
+""" 
+All bot discord messages in English
+"""
 
 HELLO_MESSAGE = "Hello !"
 SUCCESS_LANGUAGE_MESSAGE = "The language has been changed !"

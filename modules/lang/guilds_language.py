@@ -1,4 +1,6 @@
-""" Allows you to manage the language of a server discord (guilds) """
+""" 
+Allows you to manage the language of a server discord (guilds)
+"""
 
 import json
 import importlib

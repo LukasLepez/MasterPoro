@@ -1,3 +1,7 @@
+"""
+Regroup all MasterPoro voice commands 
+"""
+
 from discord.ext import commands as Commands
 
 class Voice(Commands.Cog):

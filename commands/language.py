@@ -1,3 +1,7 @@
+"""
+Regroup all MasterPoro language commands 
+"""
+
 from discord.ext import commands
 from modules.lang import guilds_language as guildsLanguage
 
