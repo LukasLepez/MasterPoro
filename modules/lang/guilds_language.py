@@ -8,7 +8,7 @@ import importlib
 
 def check_guilds_language(id_guilds: str):
     """ Function that checks the language of servers (guilds) """
-    with open('./modules/lang/server.json', 'r') as json_file_read:
+    with open('./server.json', 'r') as json_file_read:
         lang_json_r = json.load(json_file_read)
 
     lang_result = list(filter(lambda x: x == str(id_guilds), lang_json_r))
@@ -21,7 +21,7 @@ def check_guilds_language(id_guilds: str):
         }
         data.update(new_data)
 
-        with open("./modules/lang/server.json", "w") as json_file_write:
+        with open("./server.json", "w") as json_file_write:
             json.dump(data, json_file_write)
 
         json_file_write.close()
@@ -41,12 +41,12 @@ def check_guilds_language(id_guilds: str):
 def change_guilds_language(arg, id_guilds: str):
     """ Function that change the language of servers (guilds) """
     if arg in ("fr", "en"):
-        with open('./modules/lang/server.json', 'r') as json_file_read:
+        with open('./server.json', 'r') as json_file_read:
             lang_json_r = json.load(json_file_read)
 
         lang_json_r[id_guilds]['language'] = arg
 
-        with open('./modules/lang/server.json', 'w') as json_file_write:
+        with open('./server.json', 'w') as json_file_write:
             json.dump(lang_json_r, json_file_write)
 
         json_file_read.close()

@@ -1,5 +1,5 @@
 """
-Regroup all MasterPoro voice commands 
+Regroup all Adventure Man voice commands 
 """
 
 from discord.ext import commands as Commands
